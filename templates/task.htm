@@ -8,7 +8,6 @@
 
 
 
-
 <body data-spy="scroll" data-target=".navbar" data-offset="120">
     <!-- Navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -41,7 +40,7 @@
 
                             <span name="gain">Each GOOD outcome (like this one) adds 6 cents to your bonus, while each BAD outcome does not affect your bonus. (See "Current Bonus" on the right side.)</span>
                             
-                            <span name="loss">Each GOOD outcome (like this one) does not affect your bonus, while each BAD outcome is subtracts 6 cents from your baseline bonus of $6.00. (See "Current Bonus" on the right side.)</span>
+                            <span name="loss">Each GOOD outcome (like this one) does not affect your bonus, while each BAD outcome subtracts 6 cents from your bonus. (See "Current Bonus" on the right side.)</span>
 
                         </p>
                         <p name="monetary" style="display:none">On each trial, you will first see whether the shape was a <span name="var2a">SQUARE</span> or a <span name="var2b">CIRCLE</span>. You will be asked to <b>confirm</b> by clicking the matching shape in the top row. Your bonus amount is affected by these shapes. In this case, each <span name="var2a">SQUARE</span> (like this one) adds 6 cents to your baseline bonus of $0.30, while each <span name="var2b">CIRCLE</span> subtracts 6 cents. (See "Current Bonus" on the right side.) It is possible for your bonus to dip below zero if there are a lot of bad shapes. However, it is very unlikely that you will end the study with a negative bonus, and if that happens it will be rounded up to zero.</p>
@@ -407,7 +406,15 @@
                 main.$drugB.css('opacity', '1.0')
               
                 main.$feedbackDiv.text('')
-                main.$totalBonusSpan.text('0.36')
+                
+                if(main.condition == 'gain'){
+                    main.$totalBonusSpan.text('0.36')    
+                    $('#var2a_outcome_text').text('+6 cents!')
+                }else{
+                    main.$totalBonusSpan.text('0.30')    
+                    $('#var2a_outcome_text').text('')
+                }
+                
 
                 // if coming backwards
                 main.$accuracyBonusSpan.text('0.00')
@@ -431,7 +438,11 @@
                 if(main.storyCondition == 'story'){
                     main.$totalBonusSpan.text('0.33')
                 }else{
-                    main.$totalBonusSpan.text('0.39')
+                    if(main.condition == 'gain'){
+                        main.$totalBonusSpan.text('0.39')
+                    }else{
+                        main.$totalBonusSpan.text('0.33')
+                    }
                 }
                 main.$accuracyBonusDiv.css('opacity', '1.0')
                 main.$totalBonusDiv.css('opacity', '1.0')
