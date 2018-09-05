@@ -1,0 +1,609 @@
+{% extends "_base.htm" %}
+
+{% block title %}
+    Learning Task
+{% endblock%}
+
+{% block bodycontent %}
+
+
+
+
+<body data-spy="scroll" data-target=".navbar" data-offset="120">
+    <!-- Navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <p class="navbar-text">Learning Task</p>
+            </div>
+        </div>
+    </nav>
+
+    <div id="containerDiv" style="width:750px; display: none" class="container well">
+        <div class="section">
+            <div class="tab-content">
+                <div id="instructions1" class="tab-pane fade in active">
+                    <div style="height:175px">
+                        <h3>Overview</h3>
+                        <p name="story">For this task, imagine that you work in a hospital, and your job is to make sure that the patients have GOOD outcomes after treatment. You will see two scenarios, each containing information about patients who were treated for a fictional disease. You are responsible for finding out if the different medications are effective or not. Keep in mind that different diseases have different success rates for treatment. Before seeing data about each disease, you will be told which treatment is the most common, and whether the outcomes for the disease are typically GOOD or BAD.</p>
+                        <p name="monetary" style="display:none">For this task, you will learn about the relationships between shapes and colors. You will see two scenarios, each containing information about two shapes and two colors. You are responsible for finding out if there are relationships between the shapes and colors. (For example, when the shape is RECTANGLE, is the color more likely to be ORANGE or YELLOW?) Keep in mind that some shapes are more common than others, and some colors are more common than others. Before seeing the shape/color combinations, you will be told which shapes and colors are the most common.</p>
+                    </div>
+
+                    <button id="next1" class="btn btn-default" data-toggle="tab" href="#instructions2">
+                        Next
+                    </button>
+
+                </div>
+                <div id="instructions2" class="tab-pane fade">
+                    <div style="height:175px">
+                        <h3>Overview</h3>
+                        <p name="story">For each patient, you will first see whether their outcome was GOOD or BAD. You will be asked to <b>confirm</b> the outcome by clicking the appropriate face. 
+
+                            <span name="gain">Each GOOD outcome (like this one) adds 6 cents to your bonus, while each BAD outcome does not affect your bonus. (See "Current Bonus" on the right side.)</span>
+                            
+                            <span name="loss">Each GOOD outcome (like this one) does not affect your bonus, while each BAD outcome is subtracts 6 cents from your baseline bonus of $6.00. (See "Current Bonus" on the right side.)</span>
+
+                        </p>
+                        <p name="monetary" style="display:none">On each trial, you will first see whether the shape was a <span name="var2a">SQUARE</span> or a <span name="var2b">CIRCLE</span>. You will be asked to <b>confirm</b> by clicking the matching shape in the top row. Your bonus amount is affected by these shapes. In this case, each <span name="var2a">SQUARE</span> (like this one) adds 6 cents to your baseline bonus of $0.30, while each <span name="var2b">CIRCLE</span> subtracts 6 cents. (See "Current Bonus" on the right side.) It is possible for your bonus to dip below zero if there are a lot of bad shapes. However, it is very unlikely that you will end the study with a negative bonus, and if that happens it will be rounded up to zero.</p>
+                    </div>
+
+                    <button id="previous1" class="btn btn-default" data-toggle="tab" href="#instructions1">Previous</button>
+                    <button id="next2" class="btn btn-default" data-toggle="tab" href="#instructions3">
+                        Next
+                    </button>
+                </div>
+
+                <div id="instructions3" class="tab-pane fade">
+                    <div style="height:175px">
+                        <h3>Task Description</h3>
+                        <p name="story">You will also <b>guess</b> which of two treatments the patient received by clicking on one of the pills below. In this case the options are TW4 or HL3. You will be told the names of the drugs, as well as which one is more commonly used, before each disease scenario.
+                            <br><br>For now, let's say you guess TW4.
+                        </p>
+                        <p name="monetary" style="display:none">You will also <b>guess</b> what the color will be. In this case the options are <span name="var1a">COLOR</span> or <span name="var1b">COLOR</span>. You will be told the color options, as well as which one is more common, before each scenario.
+                            <br><br>For now, let's say you guess <span name="var1a">COLOR</span>.</p>
+                    </div>
+                    <button id="previous2" class="btn btn-default" data-toggle="tab" href="#instructions2">Previous</button>
+                    <button id="next3" class="btn btn-default" data-toggle="tab" href="#instructions4">
+                        Next
+                    </button>
+                </div>
+
+                <div id="instructions4" class="tab-pane fade">
+                    <div style="height:175px">
+                        <h3>Example Task</h3>
+                        <p name="story">After making your guess, you will receive immediate feedback about which drug the patient received. Each time you correctly guess the drug, you will receive a 3 cent accuracy bonus. Your bonus is continually updated in the "Current Bonus" box on the right.</p>
+                        <p name="monetary" style="display:none">After making your guess, you will receive immediate feedback about the color, and you will be asked to click on the correct color. Each time you correctly guess the color, you will receive a 3 cent accuracy bonus. Your bonus is continually updated in the "Current Bonus" box on the right.</p>
+                    </div>
+                    <button id="previous3" class="btn btn-default" data-toggle="tab" href="#instructions3">Previous</button>
+                    <button id="next4" class="btn btn-info" data-toggle="tab">
+                        Begin
+                    </button>
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row" id="taskDisplay">
+                <div class="col-xs-8" class="text-center">
+                    <div id="effectDiv" class="text-center">
+                        <h2 name="story">Patient Number <span name="patientNumber">1</span></h2>
+                        <h2 name="monetary">Trial <span name="patientNumber">1</span></h2>
+                        <!-- find a place for the patient impact info here -->
+                        <div>
+                            <p name="story">The patient's outcome was <span name="outcomeSpan">GOOD</span>.</p>
+                            <p name="monetary" style="display:none">Shape is <span name="var2a">SHAPE</span>.</p>
+                        </div>
+
+                        <div class="text-center" style="height:100px; border-bottom: 1px solid grey"> <!-- this is the div that we want split up vertically -->
+                            <div class="col-xs-4"></div>
+                            <div class="col-xs-4 text-center">
+
+                                <div id="var2_outcome">
+                                    <img id="var2_outcome_image" src="/static/images/blank.png" style="height:70px"/>
+                                </div>
+
+                            </div>
+                            <div class="col-xs-4"></div>
+
+                            <!-- <div id="outcomePercentageText" class="col-xs-4 text-left">
+                                <p style="font-size: 14pt"><span id="outcomePercentageSpan">+0.06</span></p>
+                            </div> -->
+
+                        </div>
+
+                        <div class="text-center">
+                            <p name="story" id="effectPrompt">Was the patient's outcome GOOD or BAD?</p>
+                            <p name="monetary">Was the shape <span name="var2a"></span> or <span name="var2b"></span>?</p>
+
+                        </div>
+
+                        <div id="testRow" class="row">
+
+                            <div id="leftFace" class="col-xs-5">
+                                <div id="var2a" >
+                                    <img id="var2aImg" src="/static/images/blank.png" style="height:70px"/>
+                                    <p id="var2a_outcome_text" style="visibility:hidden" name="combined">+6 cents!</p>
+                                </div>
+                                 
+                            </div>
+
+                            <div id="leftBorderDiv" class="col-xs-1" style="border-right: 1px solid black; height:70px"></div>
+                            <div id="rightBorderDiv" class="col-xs-1"></div>
+
+                            <div id="rightFace" class="col-xs-5">
+                                <div id="var2b" class="text-center">
+                                    <img id="var2bImg" src="/static/images/blank.png" style="height:70px"/>
+
+                                    <p id="var2b_outcome_text" style="visibility:hidden" name="combined">-6 cents!</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+               
+                    <div id="causeDiv" class = "text-center">
+                        <p name="story" id="causePrompt">Guess whether the patient received TW4 or HL3:</p>
+                        <p name="monetary">Guess whether the color will be <span name="var1a"></span> or <span name="var1b"></span>:</p>
+
+                        <div class="row" id="pillDiv" style="height:75px">
+                            <div id="var1a" class="col-xs-5 text-center">
+                                <p name ="story">TW4</p>
+                                <img id="var1aImg" src="/static/images/blank.png" style="width:100px"/>
+                            </div>
+                            <div class="col-xs-2 text-center">
+                                <div style="height:10px"></div>
+                                <div name="feedbackDiv" style="font-size: 10pt; padding: 5px; height: 75px"></div>
+                            </div>
+                            <div id="var1b" class="col-xs-5 text-center">
+                                <p name ="story">HL3</p>
+                                <img id="var1bImg" src="/static/images/blank.png" style="width:100px"/>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span id="feedbackSpan" style="visibility: hidden">The patient received TW4!</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="scoreDiv" class="col-xs-4 text-center">
+
+                    <p><b>Current Bonus:</b></p>
+                    <div id="totalBonusDiv" class="scoreDisplay">
+                        Bonus: $<span id="totalBonusSpan">0.36</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- form to advance to scenario -->
+        <form id="submitForm" method="get" action="/preScenario" class="hidden">
+            <input type="submit" value="" class="hidden"/>
+        </form>
+
+
+
+    </div>
+</body>
+
+
+
+
+
+<script>
+
+
+
+// $(document).ready(function(){
+
+    var main = {
+        // main should be the overall page function, data, etc.
+
+        init: function(){
+
+            // variables
+            main.paradigmData = [2, -1, 3] //{{paradigmData}}
+            // main.groupData = {{practiceData}} //{{groupData}} // 0 is A, 1 is B
+            main.progress = 0
+            main.assets = 30+main.paradigmData[main.trialNumber]
+            main.accuracyBonus = 0
+            main.guesses = new Array()
+            main.attentionFails = 0 // resets every trial
+
+            main.condition = '{{condition}}'
+            main.storystoryCondition = '{{storyCondition}}'
+
+            if(main.storyCondition === 'monetary'){
+                main.var1a = 'ORANGE'
+                main.var1b = 'YELLOW'
+                main.var2a = 'RECTANGLE'
+                main.var2b = 'TRIANGLE'
+            }else{
+                main.var2a = 'GOOD'
+                main.var2b = 'BAD'
+                main.var1a = 'TW4'
+                main.var1b = 'HL3'
+            }
+
+            main.position2 = {{position2}}
+            // main.position2 = 1 // testing
+
+            // cache DOM
+            main.cacheDOM()
+
+
+            // bind events (effect only)
+            main.bindEvents(main.progress)
+
+            // render page
+            main.render(0)
+            main.getTrialStartTime()
+        },
+
+        cacheDOM: function(){
+            this.$co = $('#containerDiv')
+
+            this.$instructionsSpan = main.$co.find('#instructionsSpan')
+
+            // this.$backButton = main.$co.find('#backButton')
+            // this.$nextButton = main.$co.find('#nextButton')
+            main.$var2aImg = $('#var2aImg')
+            main.$var2bImg = $('#var2bImg')
+            main.$var1aImg = $('#var1aImg')
+            main.$var1bImg = $('#var1bImg')
+            main.$var2_outcome_image = $('#var2_outcome_image')
+
+            main.$var2a_Spans = $('[name="var2a"]')
+            main.$var2b_Spans = $('[name="var2b"]')
+            main.$var1a_Spans = $('[name="var1a"]')
+            main.$var1b_Spans = $('[name="var1b"]')
+
+            main.$var2a = main.$co.find('#var2a')
+            main.$var2b = main.$co.find('#var2b')
+            main.$var1a = main.$co.find('#var1a')
+            main.$var1b = main.$co.find('#var1b')
+
+            this.$next1 = main.$co.find('#next1')
+            this.$next2 = main.$co.find('#next2')
+            this.$next3 = main.$co.find('#next3')
+            this.$next4 = main.$co.find('#next4')
+
+            this.$previous1 = main.$co.find('#previous1')
+            this.$previous2 = main.$co.find('#previous2')
+            this.$previous3 = main.$co.find('#previous3')
+
+            this.$effectExample = main.$co.find('#effectExample')
+            this.$effectClickExample = main.$co.find('#effectClickExample')
+            this.$instructionsDiv = main.$co.find('#instructionsDiv')
+
+            this.$leftBorderDiv = main.$co.find('#leftBorderDiv')
+            this.$rightBorderDiv = main.$co.find('#rightBorderDiv')
+
+            this.$causeClick = main.$co.find('#causeClick')
+
+            this.$effectDiv = main.$co.find('#effectDiv')
+            this.$causeDiv = main.$co.find('#causeDiv')
+            this.$scoreDiv = main.$co.find('#scoreDiv')
+
+            this.$outcomeSpans = main.$co.find('span[name=outcomeSpan]')
+            this.$outcomePercentageSpan = main.$co.find('#outcomePercentageSpan')
+
+            this.$treatmentBonusDiv = main.$co.find('#treatmentBonusDiv')
+            this.$accuracyBonusDiv = main.$co.find('#accuracyBonusDiv')
+            this.$totalBonusDiv = main.$co.find('#totalBonusDiv')
+
+            this.$treatmentBonusSpan = main.$co.find('#treatmentBonusSpan')
+            this.$accuracyBonusSpan = main.$co.find('#accuracyBonusSpan')
+            this.$totalBonusSpan = main.$co.find('#totalBonusSpan')
+            this.$feedbackDiv = main.$co.find('[name="feedbackDiv"]')
+
+            this.$drugA = main.$co.find('#drugA')
+            this.$drugB = main.$co.find('#drugB')
+
+            main.$gain = main.$co.find('[name="gain"]')
+            main.$loss = main.$co.find('[name="loss"]')
+
+
+        },
+
+        render: function(stage){
+            main.$var2a_Spans.text(main.var2a)
+            main.$var2b_Spans.text(main.var2b)
+            main.$var1a_Spans.text(main.var1a)
+            main.$var1b_Spans.text(main.var1b)
+
+            if(main.storyCondition == 'story'){
+                main.$outcomePercentageSpan.hide()
+                $('[name="combinedstoryCondition"]').hide()
+                main.$totalBonusSpan.text('0.30')
+            }
+
+
+            
+            if(stage == 0){ // very beginning, opacity of 0.2 for the example div
+                if(main.condition == 'gain'){
+                    $('[name="loss"]').hide()
+                    $('[name="gain"]').show()
+                }else{
+                    $('[name="gain"]').hide()
+                    $('[name="loss"]').show()
+                }
+
+                if(main.storyCondition == 'monetary'){
+                    // monetary:
+                    $('[name="story"]').hide()
+                    $('[name="monetary"]').show()
+
+                    
+                   
+                    // images
+                    main.$var2aImg.attr('src', '/static/images/rectangle.png')
+                    main.$var2bImg.attr('src', '/static/images/triangle.png')
+                    main.$var1aImg.attr('src', '/static/images/orange.square.png').css('height', '60px').css('width', '60px')
+                    main.$var1bImg.attr('src', '/static/images/yellow.square.png').css('height', '60px').css('width', '60px')
+                    main.$var2_outcome_image.attr('src', '/static/images/rectangle.png')
+                }else{
+
+                    // story/combined:
+                    $('[name="monetary"]').hide()
+                    $('[name="story"]').show()
+                    // images
+                    main.$var2aImg.attr('src', '/static/images/good.png')
+                    main.$var2bImg.attr('src', '/static/images/bad.png')
+                    main.$var1aImg.attr('src', '/static/images/red.pill.png')
+                    main.$var1bImg.attr('src', '/static/images/white.pill.png')
+                    main.$var2_outcome_image.attr('src', '/static/images/good.png')
+
+                    // story:
+                    if(main.storyCondition === 'story'){
+                        $('[name="combined"]').hide() // this is not the best way to do this...
+                    }
+                }
+
+                // $('#leftFace').css('height', '60px')
+                // borders (so they don't jump later)
+                main.removeBorder($('#leftFace'))
+                main.removeBorder($('#rightFace'))
+                main.removeBorder(main.$var1a)
+                main.removeBorder(main.$var1b)
+
+                // everything opaque
+                main.$effectDiv.css('opacity', '0.2')
+                main.$causeDiv.css('opacity', '0.2')
+                main.$scoreDiv.css('opacity', '0.2')
+                main.$totalBonusDiv.css('opacity', '0.2')
+
+                main.$co.show()
+
+            }else if(stage == 1){
+                // if going forward:
+                main.$effectDiv.css('opacity', '1.0')
+
+                // if coming backward:
+                main.$var2b.css('opacity', '1.0')
+                main.removeBorder(main.$var2a)
+                $('#var2a_outcome_text').css('visibility', 'hidden')
+                main.$causeDiv.css('opacity', '0.2')
+
+                main.$treatmentBonusDiv.css('opacity', '1.0')
+                main.$accuracyBonusDiv.css('opacity', '0.2')
+                main.$totalBonusDiv.css('opacity', '1.0')
+                main.$totalBonusSpan.text('0.30')
+                main.$scoreDiv.css('opacity', '1.0')
+
+
+
+
+            }else if(stage == 2){
+                main.$causeDiv.css('opacity', '1.0')
+                main.$var2b.css('opacity', '0.2')
+                main.insertBorder(main.$var2a)
+                $('#var2a_outcome_text').css('visibility', 'visible')
+                main.$drugB.css('opacity', '1.0')
+              
+                main.$feedbackDiv.text('')
+                main.$totalBonusSpan.text('0.36')
+
+                // if coming backwards
+                main.$accuracyBonusSpan.text('0.00')
+                main.removeBorder(main.$var1a)
+                
+                
+                
+                main.$accuracyBonusDiv.css('opacity', '0.2')
+                main.$totalBonusDiv.css('opacity', '1.0')
+                main.$scoreDiv.css('opacity', '1.0')
+
+
+
+            }else if(stage == 3){
+                main.$drugB.css('opacity', '0.2')
+                main.insertBorder(main.$var1a)
+                main.$feedbackDiv.html('Correct!<br>+3 cents!')
+
+
+                main.$accuracyBonusSpan.text('0.03')
+                if(main.storyCondition == 'story'){
+                    main.$totalBonusSpan.text('0.33')
+                }else{
+                    main.$totalBonusSpan.text('0.39')
+                }
+                main.$accuracyBonusDiv.css('opacity', '1.0')
+                main.$totalBonusDiv.css('opacity', '1.0')
+                main.$scoreDiv.css('opacity', '1.0')
+
+
+            }
+           
+        },
+
+        creditRender: function(credits){
+            // display credits div
+            if(credits % 100 == 0){
+                var displayCredits = String(credits/100) + '.00';
+            }else if(credits %10 == 0){
+                displayCredits = String(credits/100) +'0';
+            }else{
+                displayCredits = credits/100;
+            }
+            return(displayCredits);
+            // $creditSpan.html(displayCredits);
+        },
+
+        bindEvents: function(stage){
+
+            main.$next1.unbind().on('click', main.incrementInstructions)
+            main.$next2.unbind().on('click', main.incrementInstructions)
+            main.$next3.unbind().on('click', main.incrementInstructions)
+            main.$next4.unbind().on('click', main.mySubmit)
+
+            main.$previous1.unbind().on('click', main.decrementInstructions)
+            main.$previous2.unbind().on('click', main.decrementInstructions)
+            main.$previous3.unbind().on('click', main.decrementInstructions)
+
+
+            if(stage == 1){
+                main.$var2a.unbind().on('click', main.effectiveAlert)
+                main.$var2b.unbind().on('click', main.ineffectiveAlert)
+                if(main.position2 == 0){
+                    main.$leftBorderDiv.unbind().on('click', main.effectiveAlert)
+                    main.$rightBorderDiv.unbind().on('click', main.ineffectiveAlert)
+                }else{
+                    main.$rightBorderDiv.unbind().on('click', main.effectiveAlert)
+                    main.$leftBorderDiv.unbind().on('click', main.ineffectiveAlert)
+
+                }
+            }else{
+                main.$var2a.unbind()
+                main.$var2b.unbind()
+            }
+
+            if(stage == 2){
+                main.$var1a.unbind().on('click', main.drugA_Click)
+                main.$var1b.unbind().on('click', main.drugB_Click)
+            }else{
+                main.$var1a.unbind()
+                main.$var1b.unbind()
+            }
+
+            main.$next1.unbind().on('click', main.incrementInstructions)
+            main.$next2.unbind().on('click', main.incrementInstructions)
+            main.$next3.unbind().on('click', main.incrementInstructions)
+            main.$next4.unbind().on('click', main.mySubmit)
+
+            main.$previous1.unbind().on('click', main.decrementInstructions)
+            main.$previous2.unbind().on('click', main.decrementInstructions)
+            main.$previous3.unbind().on('click', main.decrementInstructions)
+
+
+
+        },
+
+        incrementInstructions: function(){
+            main.progress += 1
+            main.render(main.progress)
+            main.bindEvents(main.progress)
+        },
+
+        decrementInstructions: function(){
+            if(main.progress > 0){
+                main.progress -= 1
+            }
+            main.render(main.progress)
+            main.bindEvents(main.progress)
+
+        },
+
+        effectiveAlert: function(){
+            if(main.storyCondition != 'monetary'){
+                alert('Great! During the experiment, you will need to click here to indicate that the outcome was GOOD!')
+            }else{
+                alert('Great! During the experiment, you will need to click here to indicate that the shape was RECTANGLE!')
+            }
+        },
+
+        ineffectiveAlert: function(){
+            if(main.storyCondition != 'monetary'){
+                alert('Whoops! That face would indicate that the outcome was BAD!')
+            }else{
+                alert('Whoops! Clicking here would indicate that the shape was TRIANGLE!')
+            }
+        },
+
+        drugA_Click: function(){
+            if(main.storyCondition != 'monetary'){
+                alert('Great! During the experiment, clicking here is a guess that the patient received TW4!')
+            }else{
+                alert('Great! During the experiment, clicking here is a guess that the color will be ORANGE!')
+            }
+        },
+
+        drugB_Click: function(){
+            if(main.storyCondition != 'monetary'){
+                alert('Whoops! During the experiment, clicking here is a guess that the patient received HL3.')
+            }else{
+                alert('Whoops! During the experiment, clicking here is a guess that the color will be YELLOW!')
+            }
+        },
+
+        instructionsVisualReset: function(){
+
+        },
+
+        newTrial: function(){
+            // new trial:
+            main.trialNumber += 1
+            main.assets += main.paradigmData[main.trialNumber]
+            main.render('reset')
+            main.getTrialStartTime()
+            effect.bindEvents()
+            main.attentionFails = 0
+        },
+
+        getTrialStartTime: function(){
+            var trialDate = new Date()
+            main.trialStartTime = trialDate.getTime()
+        },
+
+        mySubmit: function(){
+            $('#submitForm').submit()
+
+        },
+
+        startTimer: function(){
+            start = new Date();
+            return start.getTime();
+        },
+
+        insertBorder: function(object){
+            object.css('padding', '5px')
+            object.css('border', '5px solid grey')
+            object.css('-moz-border-radius', '20px')
+            object.css('border-radius', '15px')
+        },
+
+        removeBorder: function(object){
+            object.css('padding', '5px')
+            
+            object.css('border', '5px solid #F5F5F5')
+        }
+
+    }
+
+
+
+
+
+    main.init()
+
+
+
+// })
+
+</script>
+{% endblock %}
