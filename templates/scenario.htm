@@ -124,7 +124,7 @@
 
                     <p><b>Current Bonus:</b></p>
                     <div id="totalBonusDiv" class="scoreDisplay">
-                        <span id="totalBonusSpan">0.30</span>
+                        <span id="totalBonusSpan"></span>
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@
 // var1 is the second row (it's the drug in the story conditions)
 // var2 is always the first row (it's the outcome in the story conditions)
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
 
     var main = {
@@ -198,15 +198,12 @@ $(document).ready(function(){
             }
             
 
-            main.condition = '{{condition}}' // story, monetary, combined
-            // main.condition = 'story' // testing
+            main.condition = '{{condition}}' // gain/loss
+            main.storyCondition = '{{storyCondition}}' // monetary/story/combined
 
-            if(main.condition == 'story'){
-                main.rewardAmount = 0
-            }else{
-                main.rewardAmount = {{rewardAmount}}
-            }
-
+            
+            main.rewardAmount = {{rewardAmount}}
+        
             
             // testing:
             main.position2 = {{position2}}// if 0, left is bad. if 1, left is good
@@ -443,30 +440,7 @@ $(document).ready(function(){
             main.$var2a_image = main.$co.find('[name="var2a_image"]')
             main.$var2b_image = main.$co.find('[name="var2b_image"]')
 
-            // svgs
-            // now that we're using images this might be unnecessary code
-            // if(main.position1 === 1){
-			// 	main.$shape1a = main.$var1aDiv.find('[name="'+main.var1b+'"]')
-			// 	main.$shape1b = main.$var1bDiv.find('[name="'+main.var1a+'"]')
-			// }else{
-			// 	main.$shape1a = main.$var1aDiv.find('[name="'+main.var1a+'"]')
-			// 	main.$shape1b = main.$var1bDiv.find('[name="'+main.var1b+'"]')
-			// }
-            //
-			// if(main.position2 === 1){
-			// 	main.$shape2a = main.$var2aDiv.find('[name="'+main.var2b+'"]')
-			// 	main.$shape2b = main.$var2bDiv.find('[name="'+main.var2a+'"]')
-            //     main.$outcomeA = main.$var2_outcome.find('[name="'+main.var2b+'"]')
-            //     main.$outcomeB = main.$var2_outcome.find('[name="'+main.var2a+'"]')
-            //
-            //     main.$var2a.children('img').attr('src', '/static/images/good.png')
-            //     main.$var2b.children('img').attr('src', '/static/images/bad.png')
-			// }else{
-			// 	main.$shape2a = main.$var2aDiv.find('[name="'+main.var2a+'"]')
-			// 	main.$shape2b = main.$var2bDiv.find('[name="'+main.var2b+'"]')
-            //     main.$outcomeA = main.$var2_outcome.find('[name="'+main.var2a+'"]')
-            //     main.$outcomeB = main.$var2_outcome.find('[name="'+main.var2b+'"]')
-			// }
+            
 
 
 
@@ -477,18 +451,13 @@ $(document).ready(function(){
             // This should be the only function that interacts with the visual elements of the page.
             // The 'stage' argument refers to progress within a trial.
 
-            if(main.condition == 'monetary'){
+            if(main.storyCondition == 'monetary'){
                 main.$storyDiv.hide()
                 main.$monetaryDiv.show()
             }else{
                 main.$monetaryDiv.hide()
                 main.$storyDiv.show()
             }
-
-            if(main.condition == 'story'){
-                main.$outcomePercentageSpan.hide()
-            }
-
 
             main.$var1a_Spans.text(String(main.var1a))
             main.$var1b_Spans.text(String(main.var1b))
@@ -513,17 +482,13 @@ $(document).ready(function(){
                 $('#continue_Left').css('visibility', 'hidden')
                 $('#continue_Right').css('visibility', 'hidden')
 
-                // story only
-                if(main.condition === 'story'){
-                    main.$outcomePercentageSpan.hide()
-                }
 
                 // effect div
                 main.$v2_Prompt.css('opacity', '1.0')
                 main.$var2a.css('opacity', '1.0')
                 main.$var2b.css('opacity', '1.0')
 
-                if(main.condition == 'monetary'){
+                if(main.storyCondition == 'monetary'){
                     main.$var1a_image.attr('src', main.var1a_img_src).css('width', '55px')
                     main.$var1b_image.attr('src', main.var1b_img_src).css('width', '55px')
                 }else{
@@ -602,7 +567,7 @@ $(document).ready(function(){
                         // it's a bad outcome on the left
                         main.$var2b.css('opacity', '0.2')
                         main.insertBorder(main.$var2a)
-                        if(main.condition != 'story'){
+                        if(main.condition == 'loss'){
                             $('#var2a_outcome_text').text('-6 cents!').css('visibility', 'visible')
                         }
 
@@ -610,7 +575,7 @@ $(document).ready(function(){
                         // it's a bad outcome on the right
                         main.$var2a.css('opacity', '0.2')
                         main.insertBorder(main.$var2b)    
-                        if(main.condition != 'story'){
+                        if(main.condition == 'loss'){
                             $('#var2b_outcome_text').text('-6 cents!').css('visibility', 'visible')
                         }
                     }
@@ -621,14 +586,14 @@ $(document).ready(function(){
                         // it's a good outcome on the right
                         main.$var2a.css('opacity', '0.2')
                         main.insertBorder(main.$var2b)
-                        if(main.condition != 'story'){
+                        if(main.condition == 'gain'){
                             $('#var2b_outcome_text').text('+6 cents!').css('visibility', 'visible')  
                         }
                     }else{
                         // it's a good outcome on the left
                         main.$var2b.css('opacity', '0.2')
                         main.insertBorder(main.$var2a)
-                        if(main.condition != 'story'){
+                        if(main.condition == 'gain'){
                             $('#var2a_outcome_text').text('+6 cents!').css('visibility', 'visible')  
                         }
                     }
@@ -779,14 +744,18 @@ $(document).ready(function(){
             if(main.position2 === 0){ // v2_Data = 0 means it's the left, bad outcome
 
                 if(main.v2_Data[main.trialNumber] === 0){ // bad outcome
-                    main.assets -= main.rewardAmount
+                    
+                    if(main.condition == 'loss'){
+                        main.assets -= main.rewardAmount
+                    }
+
                     main.bindEvents(1)
                     main.render('guess')
 
                 }else{
                     main.attentionFails += 1
 
-                    if(main.condition == 'monetary'){
+                    if(main.storyCondition == 'monetary'){
                         if(main.var2b == 'OVAL'){
                             alertMessage = 'Please click to indicate that Shape 1 is an '+main.var2b
                         }else{
@@ -801,7 +770,11 @@ $(document).ready(function(){
                 }
             }else{ // v2_Data = 0 means it's the right, bad outcome
                 if(main.v2_Data[main.trialNumber] === 1){ // correctly clicked left
-                    main.assets += main.rewardAmount
+                    
+                    if(main.condition == 'gain'){
+                        main.assets += main.rewardAmount
+                    }
+
                     main.bindEvents(1)
                     main.render('guess')
                 }else{
@@ -835,7 +808,10 @@ $(document).ready(function(){
                     // v2_Data = 1 means it's the right, good outcome
 
                 if(main.v2_Data[main.trialNumber] === 1){ // good outcome, correctly clicked right
-                    main.assets += main.rewardAmount
+                    if(main.condition == 'gain'){
+                        main.assets += main.rewardAmount
+                    }
+                    
                     main.bindEvents(1)
                     main.render('guess')
                 }else{
@@ -856,7 +832,9 @@ $(document).ready(function(){
                 }
             }else{ // v2_Data = 0 means it's the right, bad outcome
                 if(main.v2_Data[main.trialNumber] === 0){ // correctly clicked right
-                    main.assets -= main.rewardAmount
+                    if(main.condition == 'loss'){
+                        main.assets -= main.rewardAmount
+                    }
                     main.bindEvents(1)
                     main.render('guess')
                 }else{
@@ -973,12 +951,16 @@ $(document).ready(function(){
             // profit impact
             main.$profitImpactInput.val(0)
             if(main.v2_Data[main.trialNumber] === 0){
-                if(main.condition != 'story'){
+                if(main.condition == 'loss'){
                     main.$profitImpactInput.val(-6)
+                }else{
+                    main.$profitImpactInput.val(0)
                 }
             }else{
-                if(main.condition != 'story'){
+                if(main.condition == 'gain'){
                     main.$profitImpactInput.val(6)
+                }else{
+                    main.$profitImpactInput.val(0)
                 }
             }
 
@@ -1098,7 +1080,7 @@ $(document).ready(function(){
 
 
 
-})
+// })
 
 </script>
 {% endblock %}

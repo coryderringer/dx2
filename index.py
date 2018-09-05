@@ -547,6 +547,8 @@ class ScenarioHandler(webapp.RequestHandler):
 			group = self.session['v1_Data'][scenario]
 			data = self.session['v2_Data'][scenario]
 
+			logging.info('BONUS: '+str(self.session['runningBonuses']))
+
 			doRender(self, 'scenario.htm',
 				{'usernum':self.session['usernum'],
 				'test': 0,
@@ -816,15 +818,15 @@ class DataHandler(webapp.RequestHandler):
 			# filter usernum so we grab a little bit of data at a time, not all at once. 
 			# first round was up to usernum = 70
 			que=db.Query(ScenarioData)
-			que.filter("usernum >", 70).order("usernum").order("scenario").order("trialNumber")
+			que.filter("usernum <", 70).order("usernum").order("scenario").order("trialNumber")
 			d=que.fetch(limit=10000)
 
 			que2=db.Query(User)
-			que2.filter("usernum >", 200).order("usernum")
+			que2.filter("usernum <", 200).order("usernum")
 			u=que2.fetch(limit=10000)
 
 			que3 = db.Query(FinalJudgmentData)
-			que3.filter("usernum >", 260).order("usernum").order("scenario")
+			que3.filter("usernum <", 260).order("usernum").order("scenario")
 			t = que3.fetch(limit=10000)
 
 			if page == 'scenario':
@@ -1195,7 +1197,7 @@ class MturkIDHandler(webapp.RequestHandler):
 
 
 				# running tally of bonuses
-				self.session['runningBonuses'] = 30
+				# self.session['runningBonuses'] = 30
 
 				self.session['scenario'] = 0
 				
