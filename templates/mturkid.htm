@@ -19,7 +19,7 @@
 
     <!-- Form for verifying ID -->
     <section id="id">
-        <div class="container well">
+        <div id="mainDiv" style="display:none" class="container well">
             <h1>Verify if you qualify</h1>
             <h4>Copy and paste your <strong><u>MTurk ID</u></strong> below</h4><br>
 
@@ -32,6 +32,9 @@
                 </div>
             </form>
         </div>
+        <div id="errorDiv" style="display:none">
+        </div>
+
     </section>
 
 
@@ -55,6 +58,13 @@ $(document).ready(function(){
 
     var browser = checkBrowser();
     document.getElementById('browser').value = browser;
+
+    if({{error}} == 2){
+        $('#errorDiv').html('<p>Something went wrong. Please contact the experiment administrator.</p>').show()
+    }else{
+        $('#mainDiv').show()
+    }
+
 
 })
 </script>

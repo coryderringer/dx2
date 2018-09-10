@@ -657,97 +657,107 @@ class FinalJudgmentHandler(webapp.RequestHandler):
 		# write data
 
 		scenario = self.session['scenario']
-		self.session['runningBonuses'] = int(self.request.get('runningBonusInput'))
-
-
-		# logging.info('valence: '+valence)
-		obj = FinalJudgmentData(
-			user = self.session['userkey'],
-			usernum = self.session['usernum'],
-			account = self.session['account'],
-			scenario = self.session['scenario'],
-			valence = self.request.get('valence'),
-			condition = self.session['condition'],
-
-			# testAttempts = self.session['testAttempts'],
-
-			var1_Left = self.request.get('var1a_Name'),
-			var1_Right = self.request.get('var1b_Name'),
-			var2_Left = self.request.get('var2a_Name'),
-			var2_Right = self.request.get('var2b_Name'),
-
-			drugColor_Left = self.request.get('leftDrugColor'),
-			drugColor_Right = self.request.get('rightDrugColor'),
-
-			frequency1 = self.session['frequency1'],
-			frequency2 = self.session['frequency2'][scenario],
-			position2 = self.session['position2'],
-
-			var2a_given_var1a = int(self.request.get('var2a_given_var1a')),
-			var2b_given_var1a = int(self.request.get('var2b_given_var1a')),
-			var2a_given_var1b = int(self.request.get('var2a_given_var1b')),
-			var2b_given_var1b = int(self.request.get('var2b_given_var1b')),
-			var1a_given_var2a = int(self.request.get('var1a_given_var2a')),
-			var1b_given_var2a = int(self.request.get('var1b_given_var2a')),
-			var1a_given_var2b = int(self.request.get('var1a_given_var2b')),
-			var1b_given_var2b = int(self.request.get('var1b_given_var2b')),
-
-			causalJudgment = int(self.request.get('causalJudgment')),
-			testOrder = int(self.request.get('testOrder')),
-			Bonuses = int(self.session['runningBonuses'])
-		);
-
-		obj.put()
-
-		self.session['scenario'] += 1
 		
-		# if self.session['scenario'] > 1:
-
-		# 	self.session['scenario'] = 1 # testing
-
-		scenario=self.session['scenario']
-
-	
-
-		if scenario<=NumScenarios-1: #have more scenarios to go
-			obj = User.get(self.session['userkey']);
-			obj.progress = 2
-			obj.put()
-
-			self.session['trialNumber'] = 0
-			self.session['reloads']		= 0
-
-			disease = self.session['diseaseNames'][scenario]
-			var1_Names_Left = self.session['var1_Names'][2*scenario]
-			var1_Names_Right = self.session['var1_Names'][2*scenario+1]
-			var2_Names_Left = self.session['var2_Names'][2*scenario]
-			var2_Names_Right = self.session['var2_Names'][2*scenario+1]
-
-
-			condition = self.session['condition'] # monetary, combined, story
-
-
-			logging.info("PRESCENARIO HANDLER")
-			doRender(self, 'prescenario.htm',
-				{'disease':disease,
-				'var1_Left_Name': var1_Names_Left,
-				'var1_Right_Name': var1_Names_Right,
-				'var2_Left_Name': var2_Names_Left,
-				'var2_Right_Name': var2_Names_Right,
-				'frequency1': self.session['frequency1'],
-				'frequency2': self.session['frequency2'][scenario],
-				'condition':condition,
-				'drugColor_Left': self.session['drugColors'][2*scenario],
-				'drugColor_Right': self.session['drugColors'][2*scenario+1],
-				'position2':self.session['position2'],
-				'scenario':self.session['scenario']})
-
-
+		if(scenario > NumScenarios): # refresh problem
+			doRender(self, 'mturkid.htm',
+				{'error':2})
+		
 		else:
-			obj = User.get(self.session['userkey']);
-			obj.progress = 4
+			self.session['runningBonuses'] = int(self.request.get('runningBonusInput'))
+
+
+
+
+			# logging.info('valence: '+valence)
+			obj = FinalJudgmentData(
+				user = self.session['userkey'],
+				usernum = self.session['usernum'],
+				account = self.session['account'],
+				scenario = self.session['scenario'],
+				valence = self.request.get('valence'),
+				condition = self.session['condition'],
+
+				# testAttempts = self.session['testAttempts'],
+
+				var1_Left = self.request.get('var1a_Name'),
+				var1_Right = self.request.get('var1b_Name'),
+				var2_Left = self.request.get('var2a_Name'),
+				var2_Right = self.request.get('var2b_Name'),
+
+				drugColor_Left = self.request.get('leftDrugColor'),
+				drugColor_Right = self.request.get('rightDrugColor'),
+
+				frequency1 = self.session['frequency1'],
+				frequency2 = self.session['frequency2'][scenario],
+				position2 = self.session['position2'],
+
+				var2a_given_var1a = int(self.request.get('var2a_given_var1a')),
+				var2b_given_var1a = int(self.request.get('var2b_given_var1a')),
+				var2a_given_var1b = int(self.request.get('var2a_given_var1b')),
+				var2b_given_var1b = int(self.request.get('var2b_given_var1b')),
+				var1a_given_var2a = int(self.request.get('var1a_given_var2a')),
+				var1b_given_var2a = int(self.request.get('var1b_given_var2a')),
+				var1a_given_var2b = int(self.request.get('var1a_given_var2b')),
+				var1b_given_var2b = int(self.request.get('var1b_given_var2b')),
+
+				causalJudgment = int(self.request.get('causalJudgment')),
+				testOrder = int(self.request.get('testOrder')),
+				Bonuses = int(self.session['runningBonuses'])
+			);
+
 			obj.put()
-			doRender(self, 'demographics.htm')
+
+			self.session['scenario'] += 1
+			
+			# if self.session['scenario'] > 1:
+
+			# 	self.session['scenario'] = 1 # testing
+
+			scenario=self.session['scenario']
+
+		
+			
+			if scenario<=NumScenarios-1: #have more scenarios to go
+				obj = User.get(self.session['userkey']);
+				obj.progress = 2
+				obj.put()
+
+				self.session['trialNumber'] = 0
+				self.session['reloads']		= 0
+
+				disease = self.session['diseaseNames'][scenario]
+				var1_Names_Left = self.session['var1_Names'][2*scenario]
+				var1_Names_Right = self.session['var1_Names'][2*scenario+1]
+				var2_Names_Left = self.session['var2_Names'][2*scenario]
+				var2_Names_Right = self.session['var2_Names'][2*scenario+1]
+
+
+				condition = self.session['condition'] # monetary, combined, story
+
+
+				logging.info("PRESCENARIO HANDLER")
+				doRender(self, 'prescenario.htm',
+					{'disease':disease,
+					'var1_Left_Name': var1_Names_Left,
+					'var1_Right_Name': var1_Names_Right,
+					'var2_Left_Name': var2_Names_Left,
+					'var2_Right_Name': var2_Names_Right,
+					'frequency1': self.session['frequency1'],
+					'frequency2': self.session['frequency2'][scenario],
+					'condition':condition,
+					'drugColor_Left': self.session['drugColors'][2*scenario],
+					'drugColor_Right': self.session['drugColors'][2*scenario+1],
+					'position2':self.session['position2'],
+					'scenario':self.session['scenario']})
+
+
+			else:
+
+				obj = User.get(self.session['userkey']);
+				obj.progress = 4
+				obj.put()
+				doRender(self, 'demographics.htm')
+			
 
 
 
