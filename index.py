@@ -649,6 +649,12 @@ class ProgressCheckHandler(webapp.RequestHandler):
 
 
 class FinalJudgmentHandler(webapp.RequestHandler):
+	def get(self):
+		self.session = get_current_session()
+
+		doRender(self, 'mturkid.htm',
+			{'error':2})
+		
 
 	def post(self):
 
@@ -657,8 +663,8 @@ class FinalJudgmentHandler(webapp.RequestHandler):
 		# write data
 
 		scenario = self.session['scenario']
-		
-		if(scenario > NumScenarios): # refresh problem
+		logging.info('SCENARIO: '+str(scenario))
+		if(scenario >= NumScenarios): # refresh problem
 			doRender(self, 'mturkid.htm',
 				{'error':2})
 		

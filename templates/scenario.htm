@@ -182,7 +182,7 @@
 // var1 is the second row (it's the drug in the story conditions)
 // var2 is always the first row (it's the outcome in the story conditions)
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
 
     var main = {
@@ -702,9 +702,11 @@ $(document).ready(function(){
 
                 if(main.$correctInput.val() === main.var1a){
                     main.$var1a.unbind().on('click', main.newTrial)
+                    main.$var1b.unbind()
                 }else{
                     // if the right is correct
                     main.$var1b.unbind().on('click', main.newTrial)
+                    main.$var1a.unbind()
                 }
 
 
@@ -1080,7 +1082,7 @@ $(document).ready(function(){
 
 
 
-})
+// })
 
 </script>
 {% endblock %}
