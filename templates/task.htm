@@ -24,8 +24,8 @@
                 <div id="instructions1" class="tab-pane fade in active">
                     <div style="height:175px">
                         <h3>Overview</h3>
-                        <p name="story">For this task, imagine that you work in a hospital, and your job is to make sure that the patients have GOOD outcomes after treatment. You will see two scenarios, each containing information about patients who were treated for a fictional disease. You are responsible for finding out if the different medications are effective or not. Keep in mind that different diseases have different success rates for treatment. Before seeing data about each disease, you will be told which treatment is the most common, and whether the outcomes for the disease are typically GOOD or BAD.</p>
-                        <p name="monetary" style="display:none">For this task, you will learn about the relationships between shapes and colors. You will see two scenarios, each containing information about two shapes and two colors. You are responsible for finding out if there are relationships between the shapes and colors. (For example, when the shape is RECTANGLE, is the color more likely to be ORANGE or YELLOW?) Keep in mind that some shapes are more common than others, and some colors are more common than others. Before seeing the shape/color combinations, you will be told which shapes and colors are the most common.</p>
+                        <p name="story">For this task, imagine that you work in a hospital, and your job is to make sure that the patients have GOOD outcomes after treatment. You will see two scenarios, each containing information about patients who were treated for a fictional disease. You are responsible for finding out if the different medications are effective or not. Keep in mind that different diseases have different success rates for treatment. Before seeing data about each disease, you will be told which treatment is the most common, and whether the outcomes for the disease are typically GOOD or BAD. For practice, let's look at what would happen if you had a Current Bonus of $0.30, and your next patient had a GOOD outcome.</p>
+                        
                     </div>
 
                     <button id="next1" class="btn btn-default" data-toggle="tab" href="#instructions2">
@@ -38,12 +38,12 @@
                         <h3>Overview</h3>
                         <p name="story">For each patient, you will first see whether their outcome was GOOD or BAD. You will be asked to <b>confirm</b> the outcome by clicking the appropriate face. 
 
-                            <span name="gain">Each GOOD outcome (like this one) adds 6 cents to your bonus, while each BAD outcome does not affect your bonus. In this example, your Current Bonus would increase from $0.30 to $0.36. (See "Current Bonus" on the right side.)</span>
+                            <span name="gain">Each GOOD outcome (like this one) adds 6 cents to your bonus. In this example, your Current Bonus would increase from $0.30 to $0.36. (See "Current Bonus" on the right side.)</span>
                             
-                            <span name="loss">Each GOOD outcome (like this one) does not affect your bonus, while each BAD outcome subtracts 6 cents from your bonus. In this example, your Current Bonus would remain the same at $0.30. (See "Current Bonus" on the right side.)</span>
+                            <span name="loss">Each GOOD outcome (like this one) does not affect your bonus. In this example, your Current Bonus would remain the same at $0.30. (See "Current Bonus" on the right side.)</span>
 
                         </p>
-                        <p name="monetary" style="display:none">On each trial, you will first see whether the shape was a <span name="var2a">SQUARE</span> or a <span name="var2b">CIRCLE</span>. You will be asked to <b>confirm</b> by clicking the matching shape in the top row. Your bonus amount is affected by these shapes. In this case, each <span name="var2a">SQUARE</span> (like this one) adds 6 cents to your baseline bonus of $0.30, while each <span name="var2b">CIRCLE</span> subtracts 6 cents. (See "Current Bonus" on the right side.) It is possible for your bonus to dip below zero if there are a lot of bad shapes. However, it is very unlikely that you will end the study with a negative bonus, and if that happens it will be rounded up to zero.</p>
+                        
                     </div>
 
                     <button id="previous1" class="btn btn-default" data-toggle="tab" href="#instructions1">Previous</button>
@@ -58,8 +58,7 @@
                         <p name="story">You will also <b>guess</b> which of two treatments the patient received by clicking on one of the pills below. In this case the options are TW4 or HL3. You will be told the names of the drugs, as well as which one is more commonly used, before each disease scenario.
                             <br><br>For now, let's say you guess TW4.
                         </p>
-                        <p name="monetary" style="display:none">You will also <b>guess</b> what the color will be. In this case the options are <span name="var1a">COLOR</span> or <span name="var1b">COLOR</span>. You will be told the color options, as well as which one is more common, before each scenario.
-                            <br><br>For now, let's say you guess <span name="var1a">COLOR</span>.</p>
+                        
                     </div>
                     <button id="previous2" class="btn btn-default" data-toggle="tab" href="#instructions2">Previous</button>
                     <button id="next3" class="btn btn-default" data-toggle="tab" href="#instructions4">
@@ -71,18 +70,67 @@
                     <div style="height:175px">
                         <h3>Example Task</h3>
                         <p name="story">After making your guess, you will receive immediate feedback about which drug the patient received. Each time you correctly guess the drug, you will receive a 3 cent accuracy bonus. Your bonus is continually updated in the "Current Bonus" box on the right.</p>
-                        <p name="monetary" style="display:none">After making your guess, you will receive immediate feedback about the color, and you will be asked to click on the correct color. Each time you correctly guess the color, you will receive a 3 cent accuracy bonus. Your bonus is continually updated in the "Current Bonus" box on the right.</p>
+
+                        <p name="story">Now that we've seen a GOOD outcome, let's look at a patient who had a BAD outcome.</p>
+                        
                     </div>
                     <button id="previous3" class="btn btn-default" data-toggle="tab" href="#instructions3">Previous</button>
-                    <button id="next4" class="btn btn-info" data-toggle="tab">
-                        Begin
+                    <button id="next4" class="btn btn-default" data-toggle="tab" href="#instructions5">
+                        Next
                     </button>
-
-
 
                 </div>
 
-            </div>
+                <div id="instructions5" class="tab-pane fade">
+                    <div style="height:175px">
+                        <h3>Overview</h3>
+                        <p name="story">This patient had a BAD outcome. 
+
+                            <span name="gain">Each BAD outcome (like this one) does not affect your bonus. In this example, your Current Bonus would remain the same at $0.39. (See "Current Bonus" on the right side.)</span>
+                            
+                            <span name="loss">Each BAD outcome (like this one) subtracts 6 cents from your bonus. In this example, your Current Bonus would decrease from $0.33 to $0.27. (See "Current Bonus" on the right side.)</span>
+
+                        </p>
+                        
+                    </div>
+
+                    <button id="previous4" class="btn btn-default" data-toggle="tab" href="#instructions4">Previous</button>
+                    <button id="next5" class="btn btn-default" data-toggle="tab" href="#instructions6">
+                        Next
+                    </button>
+                </div>
+
+
+                <div id="instructions6" class="tab-pane fade">
+                    <div style="height:175px">
+                        <h3>Task Description</h3>
+                        <p name="story">You will also <b>guess</b> which of two treatments the patient received by clicking on one of the pills below. In this case the options are TW4 or HL3. You will be told the names of the drugs, as well as which one is more commonly used, before each disease scenario.
+                            <br><br>For now, let's say you guess TW4 again.
+                        </p>
+                        
+                    </div>
+                    <button id="previous5" class="btn btn-default" data-toggle="tab" href="#instructions5">Previous</button>
+                    <button id="next6" class="btn btn-default" data-toggle="tab" href="#instructions7">
+                        Next
+                    </button>
+                </div>
+
+                <div id="instructions7" class="tab-pane fade">
+                    <div style="height:175px">
+                        <h3>Example Task</h3>
+                        <p name="story">After making your guess, you will receive immediate feedback about which drug the patient received. Each time you correctly guess the drug, you will receive a 3 cent accuracy bonus. Your bonus is continually updated in the "Current Bonus" box on the right.</p>
+
+                        <p name="story">Click "Begin" when you are ready to start the experiment.</p>
+                        
+                    </div>
+                    <button id="previous6" class="btn btn-default" data-toggle="tab" href="#instructions6">Previous</button>
+                    <button id="next_final" class="btn btn-info" data-toggle="tab">
+                        Begin
+                    </button>
+
+                </div>
+
+
         </div>
 
         <div class="section">
@@ -90,11 +138,9 @@
                 <div class="col-xs-8" class="text-center">
                     <div id="effectDiv" class="text-center">
                         <h2 name="story">Patient Number <span name="patientNumber">1</span></h2>
-                        <h2 name="monetary">Trial <span name="patientNumber">1</span></h2>
                         <!-- find a place for the patient impact info here -->
                         <div>
                             <p name="story">The patient's outcome was <span name="outcomeSpan">GOOD</span>.</p>
-                            <p name="monetary" style="display:none">Shape is <span name="var2a">SHAPE</span>.</p>
                         </div>
 
                         <div class="text-center" style="height:100px; border-bottom: 1px solid grey"> <!-- this is the div that we want split up vertically -->
@@ -116,8 +162,7 @@
 
                         <div class="text-center">
                             <p name="story" id="effectPrompt">Was the patient's outcome GOOD or BAD?</p>
-                            <p name="monetary">Was the shape <span name="var2a"></span> or <span name="var2b"></span>?</p>
-
+                            
                         </div>
 
                         <div id="testRow" class="row">
@@ -148,8 +193,7 @@
                
                     <div id="causeDiv" class = "text-center">
                         <p name="story" id="causePrompt">Guess whether the patient received TW4 or HL3:</p>
-                        <p name="monetary">Guess whether the color will be <span name="var1a"></span> or <span name="var1b"></span>:</p>
-
+                        
                         <div class="row" id="pillDiv" style="height:75px">
                             <div id="var1a" class="col-xs-5 text-center">
                                 <p name ="story">TW4</p>
@@ -215,6 +259,7 @@ $(document).ready(function(){
             main.attentionFails = 0 // resets every trial
 
             main.condition = '{{condition}}'
+            
             main.storystoryCondition = '{{storyCondition}}'
 
             if(main.storyCondition === 'monetary'){
@@ -229,9 +274,8 @@ $(document).ready(function(){
                 main.var1b = 'HL3'
             }
 
-            main.position2 = {{position2}}
-            // main.position2 = 1 // testing
-
+            main.position2 = {{position2}} 
+            
             // cache DOM
             main.cacheDOM()
 
@@ -271,10 +315,17 @@ $(document).ready(function(){
             this.$next2 = main.$co.find('#next2')
             this.$next3 = main.$co.find('#next3')
             this.$next4 = main.$co.find('#next4')
+            this.$next5 = main.$co.find('#next5')
+            this.$next6 = main.$co.find('#next6')
+
+            this.$next_final = main.$co.find('#next_final')
 
             this.$previous1 = main.$co.find('#previous1')
             this.$previous2 = main.$co.find('#previous2')
             this.$previous3 = main.$co.find('#previous3')
+            this.$previous4 = main.$co.find('#previous4')
+            this.$previous5 = main.$co.find('#previous5')
+            this.$previous6 = main.$co.find('#previous6')
 
             this.$effectExample = main.$co.find('#effectExample')
             this.$effectClickExample = main.$co.find('#effectClickExample')
@@ -325,6 +376,7 @@ $(document).ready(function(){
 
             
             if(stage == 0){ // very beginning, opacity of 0.2 for the example div
+                console.log('stage 0')
                 if(main.condition == 'gain'){
                     $('[name="loss"]').hide()
                     $('[name="gain"]').show()
@@ -333,43 +385,29 @@ $(document).ready(function(){
                     $('[name="loss"]').show()
                 }
 
-                if(main.storyCondition == 'monetary'){
-                    // monetary:
-                    $('[name="story"]').hide()
-                    $('[name="monetary"]').show()
-
-                    
-                   
-                    // images
-                    main.$var2aImg.attr('src', '/static/images/rectangle.png')
-                    main.$var2bImg.attr('src', '/static/images/triangle.png')
-                    main.$var1aImg.attr('src', '/static/images/orange.square.png').css('height', '60px').css('width', '60px')
-                    main.$var1bImg.attr('src', '/static/images/yellow.square.png').css('height', '60px').css('width', '60px')
-                    main.$var2_outcome_image.attr('src', '/static/images/rectangle.png')
-                }else{
-
-                    // story/combined:
-                    $('[name="monetary"]').hide()
-                    $('[name="story"]').show()
-                    // images
+                // story/combined:
+                $('[name="story"]').show()
+                // images
+                if(main.position2 == 1){
                     main.$var2aImg.attr('src', '/static/images/good.png')
-                    main.$var2bImg.attr('src', '/static/images/bad.png')
-                    main.$var1aImg.attr('src', '/static/images/red.pill.png')
-                    main.$var1bImg.attr('src', '/static/images/white.pill.png')
-                    main.$var2_outcome_image.attr('src', '/static/images/good.png')
-
-                    // story:
-                    if(main.storyCondition === 'story'){
-                        $('[name="combined"]').hide() // this is not the best way to do this...
-                    }
+                    main.$var2bImg.attr('src', '/static/images/bad.png')   
+                }else{
+                    main.$var2bImg.attr('src', '/static/images/good.png')
+                    main.$var2aImg.attr('src', '/static/images/bad.png')
                 }
-
-                // $('#leftFace').css('height', '60px')
+                    
+                    
+                main.$var2_outcome_image.attr('src', '/static/images/good.png')
+                main.$var1aImg.attr('src', '/static/images/red.pill.png')
+                main.$var1bImg.attr('src', '/static/images/white.pill.png')
+               
+                
                 // borders (so they don't jump later)
-                main.removeBorder($('#leftFace'))
-                main.removeBorder($('#rightFace'))
+                main.removeBorder(main.$var2a)
+                main.removeBorder(main.$var2b)
                 main.removeBorder(main.$var1a)
                 main.removeBorder(main.$var1b)
+                
 
                 // everything opaque
                 main.$effectDiv.css('opacity', '0.2')
@@ -380,14 +418,22 @@ $(document).ready(function(){
                 main.$co.show()
 
             }else if(stage == 1){
-                // if going forward:
-                main.$effectDiv.css('opacity', '1.0')
+                console.log('stage 1')
+                
+                
+                if(main.position2 == 1){
+                    main.$var2b.css('opacity', '1.0')
+                    main.removeBorder(main.$var2a)
+                    $('#var2a_outcome_text').css('visibility', 'hidden')    
+                }else{
+                    main.$var2a.css('opacity', '1.0')
+                    main.removeBorder(main.$var2b)
+                    $('#var2b_outcome_text').css('visibility', 'hidden')    
+                }
 
-                // if coming backward:
-                main.$var2b.css('opacity', '1.0')
-                main.removeBorder(main.$var2a)
-                $('#var2a_outcome_text').css('visibility', 'hidden')
+                main.$effectDiv.css('opacity', '1.0')
                 main.$causeDiv.css('opacity', '0.2')
+
 
                 main.$treatmentBonusDiv.css('opacity', '1.0')
                 main.$accuracyBonusDiv.css('opacity', '0.2')
@@ -399,29 +445,47 @@ $(document).ready(function(){
 
 
             }else if(stage == 2){
+
+                console.log('stage 2')
                 main.$causeDiv.css('opacity', '1.0')
-                main.$var2b.css('opacity', '0.2')
-                main.insertBorder(main.$var2a)
-                $('#var2a_outcome_text').css('visibility', 'visible')
-                main.$drugB.css('opacity', '1.0')
-              
-                main.$feedbackDiv.text('')
+
+                if(main.position2 == 1){
+                    main.$var2b.css('opacity', '0.2')
+                    main.insertBorder(main.$var2a)
+                    $('#var2a_outcome_text').css('visibility', 'visible')
+                    main.$var1b.css('opacity', '1.0')
+    
+                    main.$feedbackDiv.text('')
                 
-                if(main.condition == 'gain'){
-                    main.$totalBonusSpan.text('0.36')    
-                    $('#var2a_outcome_text').text('+6 cents!')
+                    if(main.condition == 'gain'){
+                        main.$totalBonusSpan.text('0.36')    
+                        $('#var2a_outcome_text').text('+6 cents!')
+                    }else{
+                        main.$totalBonusSpan.text('0.30')    
+                        $('#var2a_outcome_text').text('-0 cents!')
+                    }
+
                 }else{
-                    main.$totalBonusSpan.text('0.30')    
-                    $('#var2a_outcome_text').text('')
-                }
+                    main.$var2a.css('opacity', '0.2')
+                    main.insertBorder(main.$var2b)
+                    $('#var2b_outcome_text').css('visibility', 'visible')
+                    main.$var1a.css('opacity', '1.0')
+    
+                    main.$feedbackDiv.text('')
                 
+                    if(main.condition == 'gain'){
+                        main.$totalBonusSpan.text('0.36')    
+                        $('#var2b_outcome_text').text('+6 cents!')
+                    }else{
+                        main.$totalBonusSpan.text('0.30')    
+                        $('#var2b_outcome_text').text('-0 cents!')
+                    }
+
+                }
 
                 // if coming backwards
                 main.$accuracyBonusSpan.text('0.00')
-                main.removeBorder(main.$var1a)
-                
-                
-                
+                main.removeBorder(main.$var1a)    
                 main.$accuracyBonusDiv.css('opacity', '0.2')
                 main.$totalBonusDiv.css('opacity', '1.0')
                 main.$scoreDiv.css('opacity', '1.0')
@@ -429,10 +493,19 @@ $(document).ready(function(){
 
 
             }else if(stage == 3){
-                main.$drugB.css('opacity', '0.2')
+                console.log('stage 3')
+                if(main.position2 == 1){ 
+                    main.insertBorder(main.$var2a) // backward
+                }else{
+                    main.insertBorder(main.$var2b) // backward
+                }
+                
+
+                main.$var1b.css('opacity', '0.2')
                 main.insertBorder(main.$var1a)
                 main.$feedbackDiv.html('Correct!<br>+3 cents!')
-
+                $('#var2_outcome_image').prop('src', '/static/images/good.png') // backward
+                $('[name="patientNumber"]').text('1') // backward
 
                 main.$accuracyBonusSpan.text('0.03')
                 if(main.storyCondition == 'story'){
@@ -448,6 +521,105 @@ $(document).ready(function(){
                 main.$totalBonusDiv.css('opacity', '1.0')
                 main.$scoreDiv.css('opacity', '1.0')
 
+
+            }else if(stage == 4){
+                console.log('stage 4')
+                //  bad outcome, otherwise same as stage 2
+
+
+
+                $('[name="patientNumber"]').text('2')
+                // change image
+                $('#var2_outcome_image').prop('src', '/static/images/bad.png')
+
+                // change spans
+                $('[name="outcomeSpan"]').text('BAD')
+
+                main.$causeDiv.css('opacity', '1.0')
+                main.$var2b.css('opacity', '1.0')
+                main.$var2a.css('opacity', '1.0') // if coming backward
+                
+                main.removeBorder(main.$var2a)
+                main.removeBorder(main.$var2b)
+                
+                $('#var2a_outcome_text').css('visibility', 'hidden')
+                $('#var2b_outcome_text').css('visibility', 'hidden')
+                
+                
+                main.$var1b.css('opacity', '1.0')
+
+              
+                main.$feedbackDiv.text('')
+                
+                // haven't changed the bonus yet, so undo the stage 5 bonuses
+                if(main.condition == 'gain'){
+                    main.$totalBonusSpan.text('0.39')
+                }else{
+                    main.$totalBonusSpan.text('0.33')
+                }
+
+                // if coming backwards
+                main.$accuracyBonusSpan.text('0.00')
+                main.removeBorder(main.$var1a)
+                
+                
+                
+                main.$accuracyBonusDiv.css('opacity', '0.2')
+                main.$totalBonusDiv.css('opacity', '1.0')
+                main.$scoreDiv.css('opacity', '1.0')
+
+            }else if(stage == 5){
+                console.log('stage 5')
+
+                if(main.position2 == 1){
+
+                    main.insertBorder(main.$var2b)
+                    main.$var2a.css('opacity', '0.2')
+                    if(main.condition == 'gain'){
+                        main.$totalBonusSpan.text('0.39')    
+                        $('#var2b_outcome_text').text('+0 cents!')
+                    }else{
+                        main.$totalBonusSpan.text('0.27')    
+                        $('#var2b_outcome_text').text('-6 cents!')
+                    }
+
+                    $('#var2b_outcome_text').css('visibility', 'visible')
+
+                }else{
+                    main.insertBorder(main.$var2a)
+                    main.$var2b.css('opacity', '0.2')
+                    if(main.condition == 'gain'){
+                        main.$totalBonusSpan.text('0.39')    
+                        $('#var2a_outcome_text').text('+0 cents!')
+                    }else{
+                        main.$totalBonusSpan.text('0.27')    
+                        $('#var2a_outcome_text').text('-6 cents!')
+                    }
+
+                    $('#var2a_outcome_text').css('visibility', 'visible')
+                }
+
+                main.$var1b.css('opacity', '1.0')
+
+                // undo stuff from stage 6
+                main.removeBorder(main.$var1a)
+                main.$feedbackDiv.html('')
+
+            }else if(stage == 6){
+                console.log('stage 6')
+                main.$var1b.css('opacity', '0.2')
+
+                main.insertBorder(main.$var1a)                
+                main.insertBorder(main.$var1a)
+                main.$feedbackDiv.html('Correct!<br>+3 cents!')
+
+                if(main.condition == 'gain'){
+                    main.$totalBonusSpan.text('0.42')    
+                    $('#var2b_outcome_text').text('+0 cents!')
+                }else{
+                    main.$totalBonusSpan.text('0.30')    
+                    $('#var2b_outcome_text').text('-6 cents!')
+                }
 
             }
            
@@ -471,30 +643,35 @@ $(document).ready(function(){
             main.$next1.unbind().on('click', main.incrementInstructions)
             main.$next2.unbind().on('click', main.incrementInstructions)
             main.$next3.unbind().on('click', main.incrementInstructions)
-            main.$next4.unbind().on('click', main.mySubmit)
+            main.$next4.unbind().on('click', main.incrementInstructions)
+            main.$next5.unbind().on('click', main.incrementInstructions)
+            main.$next6.unbind().on('click', main.incrementInstructions)
+
+            main.$next_final.unbind().on('click', main.mySubmit)
 
             main.$previous1.unbind().on('click', main.decrementInstructions)
             main.$previous2.unbind().on('click', main.decrementInstructions)
             main.$previous3.unbind().on('click', main.decrementInstructions)
+            main.$previous4.unbind().on('click', main.decrementInstructions)
+            main.$previous5.unbind().on('click', main.decrementInstructions)
+            main.$previous6.unbind().on('click', main.decrementInstructions)
 
-
-            if(stage == 1){
-                main.$var2a.unbind().on('click', main.effectiveAlert)
-                main.$var2b.unbind().on('click', main.ineffectiveAlert)
-                if(main.position2 == 0){
-                    main.$leftBorderDiv.unbind().on('click', main.effectiveAlert)
-                    main.$rightBorderDiv.unbind().on('click', main.ineffectiveAlert)
+           
+            if(stage == 1 | stage == 4){
+                if(main.position2 == 1){
+                    main.$var2a.unbind().on('click', main.effectiveAlert)
+                    main.$var2b.unbind().on('click', main.ineffectiveAlert)
                 }else{
-                    main.$rightBorderDiv.unbind().on('click', main.effectiveAlert)
-                    main.$leftBorderDiv.unbind().on('click', main.ineffectiveAlert)
-
+                    main.$var2a.unbind().on('click', main.ineffectiveAlert)
+                    main.$var2b.unbind().on('click', main.effectiveAlert)
                 }
+
             }else{
                 main.$var2a.unbind()
                 main.$var2b.unbind()
             }
 
-            if(stage == 2){
+            if(stage == 2 | stage == 5){
                 main.$var1a.unbind().on('click', main.drugA_Click)
                 main.$var1b.unbind().on('click', main.drugB_Click)
             }else{
@@ -502,14 +679,24 @@ $(document).ready(function(){
                 main.$var1b.unbind()
             }
 
+
+
+
             main.$next1.unbind().on('click', main.incrementInstructions)
             main.$next2.unbind().on('click', main.incrementInstructions)
             main.$next3.unbind().on('click', main.incrementInstructions)
-            main.$next4.unbind().on('click', main.mySubmit)
+            main.$next4.unbind().on('click', main.incrementInstructions)
+            main.$next5.unbind().on('click', main.incrementInstructions)
+            main.$next6.unbind().on('click', main.incrementInstructions)
+
+            main.$next_final.unbind().on('click', main.mySubmit)
 
             main.$previous1.unbind().on('click', main.decrementInstructions)
             main.$previous2.unbind().on('click', main.decrementInstructions)
             main.$previous3.unbind().on('click', main.decrementInstructions)
+            main.$previous4.unbind().on('click', main.decrementInstructions)
+            main.$previous5.unbind().on('click', main.decrementInstructions)
+            main.$previous6.unbind().on('click', main.decrementInstructions)
 
 
 
@@ -531,18 +718,19 @@ $(document).ready(function(){
         },
 
         effectiveAlert: function(){
-            if(main.storyCondition != 'monetary'){
+            if(main.progress == 1){
                 alert('Great! During the experiment, you will need to click here to indicate that the outcome was GOOD!')
             }else{
-                alert('Great! During the experiment, you will need to click here to indicate that the shape was RECTANGLE!')
+                alert('Whoops! That face would indicate that the outcome was GOOD!')
             }
+            
         },
 
         ineffectiveAlert: function(){
-            if(main.storyCondition != 'monetary'){
+            if(main.progress == 1){
                 alert('Whoops! That face would indicate that the outcome was BAD!')
             }else{
-                alert('Whoops! Clicking here would indicate that the shape was TRIANGLE!')
+                alert('Great! During the experiment, you will need to click here to indicate that the outcome was BAD!')
             }
         },
 

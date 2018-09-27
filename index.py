@@ -1004,7 +1004,7 @@ class MturkIDHandler(webapp.RequestHandler):
 		form_fields = {
 			"ID": ID,
 			"ClassOfStudies": 'Cory Dissertation',
-			"StudyNumber": 1
+			"StudyNumber": 2
 			}
 
 		form_data = urllib.urlencode(form_fields)
