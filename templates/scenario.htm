@@ -520,9 +520,7 @@ $(document).ready(function(){
                         $('#var2_feedback').text(main.var2b)
                         main.$outcomeSpans.text('GOOD')
                         $('#var2_value').val(main.var2b)
-                        if(main.condition != 'story'){
-                            main.$outcomePercentageSpan.text('+6 cents!')    
-                        }
+                        
                         
 
                     }else{ // bad outcome, so left image
@@ -530,9 +528,7 @@ $(document).ready(function(){
                         $('#var2_feedback').text(main.var2a)
                         main.$outcomeSpans.text('BAD')
                         $('#var2_value').val(main.var2a)
-                        if(main.condition != 'story'){
-                            main.$outcomePercentageSpan.text('-6 cents!')
-                        }
+                        
                     }
 
                 }else{ // right is bad (0 is always bad)
@@ -541,18 +537,14 @@ $(document).ready(function(){
                         $('#var2_feedback').text(main.var2a)
                         main.$outcomeSpans.text('GOOD')
                         $('#var2_value').val(main.var2a)
-                        if(main.condition != 'story'){
-                            main.$outcomePercentageSpan.text('+6 cents!')
-                        }
+                        
 
                     }else{ // bad outcome, so left image
                         $('#var2_outcome_image').attr('src', main.var2b_img_src)
                         $('#var2_feedback').text(main.var2b)
                         main.$outcomeSpans.text('BAD')
                         $('#var2_value').val(main.var2b)
-                        if(main.condition != 'story'){
-                            main.$outcomePercentageSpan.text('-6 cents!')
-                        }
+                        
                     }
                 }
 

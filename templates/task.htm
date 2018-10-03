@@ -415,7 +415,7 @@ $(document).ready(function(){
                 main.$scoreDiv.css('opacity', '0.2')
                 main.$totalBonusDiv.css('opacity', '0.2')
 
-                main.$co.show()
+                
 
             }else if(stage == 1){
                 console.log('stage 1')
@@ -451,8 +451,7 @@ $(document).ready(function(){
 
                 if(main.position2 == 1){
                     main.$var2b.css('opacity', '0.2')
-                    main.insertBorder(main.$var2a)
-                    $('#var2a_outcome_text').css('visibility', 'visible')
+                    main.insertBorder(main.$var2a)                    
                     main.$var1b.css('opacity', '1.0')
     
                     main.$feedbackDiv.text('')
@@ -460,15 +459,17 @@ $(document).ready(function(){
                     if(main.condition == 'gain'){
                         main.$totalBonusSpan.text('0.36')    
                         $('#var2a_outcome_text').text('+6 cents!')
+                        $('#var2a_outcome_text').css('visibility', 'visible')
                     }else{
                         main.$totalBonusSpan.text('0.30')    
-                        $('#var2a_outcome_text').text('-0 cents!')
+                        // $('#var2a_outcome_text').text('')
                     }
+
+                    
 
                 }else{
                     main.$var2a.css('opacity', '0.2')
                     main.insertBorder(main.$var2b)
-                    $('#var2b_outcome_text').css('visibility', 'visible')
                     main.$var1a.css('opacity', '1.0')
     
                     main.$feedbackDiv.text('')
@@ -476,10 +477,13 @@ $(document).ready(function(){
                     if(main.condition == 'gain'){
                         main.$totalBonusSpan.text('0.36')    
                         $('#var2b_outcome_text').text('+6 cents!')
+                        $('#var2b_outcome_text').css('visibility', 'visible')
                     }else{
                         main.$totalBonusSpan.text('0.30')    
-                        $('#var2b_outcome_text').text('-0 cents!')
+                        // $('#var2b_outcome_text').text('-0 cents!')
                     }
+
+                    
 
                 }
 
@@ -577,26 +581,28 @@ $(document).ready(function(){
                     main.$var2a.css('opacity', '0.2')
                     if(main.condition == 'gain'){
                         main.$totalBonusSpan.text('0.39')    
-                        $('#var2b_outcome_text').text('+0 cents!')
+                        // $('#var2b_outcome_text').text('+0 cents!')
                     }else{
                         main.$totalBonusSpan.text('0.27')    
                         $('#var2b_outcome_text').text('-6 cents!')
+                        $('#var2b_outcome_text').css('visibility', 'visible')
                     }
 
-                    $('#var2b_outcome_text').css('visibility', 'visible')
+                    
 
                 }else{
                     main.insertBorder(main.$var2a)
                     main.$var2b.css('opacity', '0.2')
                     if(main.condition == 'gain'){
                         main.$totalBonusSpan.text('0.39')    
-                        $('#var2a_outcome_text').text('+0 cents!')
+                        // $('#var2a_outcome_text').text('+0 cents!')
                     }else{
                         main.$totalBonusSpan.text('0.27')    
                         $('#var2a_outcome_text').text('-6 cents!')
+                        $('#var2a_outcome_text').css('visibility', 'visible')
                     }
 
-                    $('#var2a_outcome_text').css('visibility', 'visible')
+                    
                 }
 
                 main.$var1b.css('opacity', '1.0')
@@ -622,6 +628,7 @@ $(document).ready(function(){
                 }
 
             }
+            main.$co.show()
            
         },
 

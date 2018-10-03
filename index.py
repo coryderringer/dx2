@@ -738,7 +738,7 @@ class FinalJudgmentHandler(webapp.RequestHandler):
 				var2_Names_Right = self.session['var2_Names'][2*scenario+1]
 
 
-				condition = self.session['condition'] # monetary, combined, story
+				condition = self.session['condition'] # gain/loss
 
 
 				logging.info("PRESCENARIO HANDLER")
